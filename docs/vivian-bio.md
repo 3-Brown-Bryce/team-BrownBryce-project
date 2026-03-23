@@ -1,1 +1,1 @@
-Hi, I'm Vivian, and I'm the frontend developer.
+Hi, my name is Vivian, and I'm the frontend developer.
