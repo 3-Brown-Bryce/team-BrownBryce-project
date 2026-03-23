@@ -20,6 +20,6 @@ Sammy - Ux researcher and needfinder
 
 Harper - UX/UI designer
 
-Vivian - Frontend programmer
+Vivian - Frontend developer
 
-Ariana - Backend programmer
+Ariana - Backend developer
