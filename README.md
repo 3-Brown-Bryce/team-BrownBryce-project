@@ -16,7 +16,7 @@ Students, not as much at CCA but definetely still some, tend to procrastinate on
 
 Bryce - Project manager
 
-Sammy - Ux researcher and needfinder
+Sammy - UX researcher and needfinder
 
 Harper - UX/UI designer
 
