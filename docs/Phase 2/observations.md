@@ -1,35 +1,35 @@
 1. 
 - He’s on Instagram
-- No earbuds, listening on mute
+- No earbuds/listening on mute
 - Poor posture
 - Watched longer than average reels
-- No blinking ( not often)
+- No blinking (not often)
 - does not fidget much
 - No facial changes
-- Algorithm is very curated for him
+- Algorithm is extremely well curated for him
 - Comfort position
 - Food content
 
 2. 
-- person is on chess instead of doing glasswork
+- person is on chess instead of doing classwork
 - Rest of class on task
 - Slouched posture
 - Not talking to people
-- Briefly tries to be on task but shifts to being on task
+- Briefly tries to be on task but shifts to being off-task
 - Using wait times in chess to work
 - Posture switches between work and games
 - Arm out to hide screen
 - Doesn’t react to teacher talking
-- Periodical turns his head
+- Periodically turns his head
 
 3. 
 - No fidgeting 
 - Engrossed with their phone
-- Most students on task for coworkers
-- Despite having his own computer, he’s using his phone
+- Most students are on task; this person is not
+- Despite having his own home computer, he’s using his phone
 - Using his computer to hide his phone
 - Is leaning in towards his phone
-- Appears to be playing brawl stars (brawlstars)
+- Appears to be playing brawl stars, confirmation: it was brawl stars
 - Periodical stretching
 - Doesn’t react to teacher talking
 - Has homework open, doesn’t look at it
@@ -41,7 +41,7 @@
 - Doesn’t react to teacher talking
 - Looks dismayed when putting away phone
 - Doesn’t actually put away phone, hides it behind arm
-- Even while other brighter more interesting stimulus is present dis not pay attention
+- Even while other brighter more interesting stimulus is present, does not pay attention
 - Poor posture
 - Tries to sleep when not able to look at phone
 - Sleepy when not looking at phone
@@ -64,14 +64,14 @@
 - Facing teacher
 - Screen is hidden away from the teacher
 - Intermittently goes back to work
-- Fidgets while watching, constant movement
+- Fidgets while watching/constant movement
 - Actively positions self to be hidden
 - Poor posture/slouch
 - Self soothing behavior like hands near mouth
-- Hardly pays attention to teacher, but does intermittently
+- Hardly pays attention to teacher, but does so intermittently
 
 7. 
-- while other video is playing, more interested in game recap
+- while a class video is playing, is more interested in game recap
 - In chrome book
 - Skips ahead on the video periodically
 - Full screen
