@@ -6,11 +6,11 @@ Brown Bryce
 
 **App name** 
 
-Task pal (very tentative)
+Addiction Management (very tentative)
 
 **Problem**
 
-Students, not as much at CCA but definetely still some, tend to procrastinate on assignments until the last second. This is very unhealthy, and could be solved by having a tracker for different assignments
+Students are often aware they're addicted to something but can't find a way to manage it or not start an addiction. This app aims to help students manage things like a social media addiction.
 
 **Team member names**
 
