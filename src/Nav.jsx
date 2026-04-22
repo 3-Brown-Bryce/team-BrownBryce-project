@@ -1,4 +1,4 @@
-import "./Nav.css"
+//import "./Nav.css"
 function Nav({ setPage }) {
     return (
         <div className="nav">
