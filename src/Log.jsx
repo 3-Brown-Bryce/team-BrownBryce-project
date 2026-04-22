@@ -5,8 +5,8 @@ import ClaimReward from './Reward.jsx';
 function DailyLog(){
     return(
         <div>
-            <Journal />
             <Upload />
+            <Journal />
         </div>
     )
 }
