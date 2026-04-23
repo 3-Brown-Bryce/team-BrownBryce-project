@@ -1,30 +1,44 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #eee;
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+  color: #1f2937;
 }
 
 .container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
   text-align: center;
 }
 
 .header {
-  background: #a8c89a;
-  font-size: 40px;
+  background: linear-gradient(90deg, #6ea86b, #9bcf9a);
+  font-size: 36px;
   padding: 20px;
-  font-weight: bold;
+  font-weight: 700;
+  color: white;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  letter-spacing: 1px;
 }
 
 .main {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin-top: 40px;
+  gap: 30px;
 }
 
 .left,
 .right {
-  font-size: 36px;
+  font-size: 28px;
+  color: #6b7280;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .clock-container {
@@ -34,11 +48,14 @@ body {
 }
 
 .clock {
-  width: 200px;
-  height: 200px;
-  border: 10px solid #7ea16f;
+  width: 220px;
+  height: 220px;
+  border: 10px solid #6ea86b;
   border-radius: 50%;
   position: relative;
+  background: #ffffff;
+  box-shadow: inset 0 4px 12px rgba(0,0,0,0.05),
+              0 10px 25px rgba(0,0,0,0.12);
 }
 
 .hand {
@@ -46,60 +63,102 @@ body {
   bottom: 50%;
   left: 50%;
   transform-origin: bottom;
-  background: rgb(28, 42, 17);
+  border-radius: 5px;
 }
 
 .hour {
   width: 6px;
   height: 50px;
+  background: #111827;
 }
 
 .minute {
   width: 4px;
-  height: 70px;
+  height: 75px;
+  background: #374151;
 }
 
 .second {
   width: 2px;
-  height: 90px;
-  background: red;
+  height: 95px;
+  background: #ef4444;
+}
+
+.clock::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #111827;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .days-number {
-  font-size: 28px;
-  margin-top: 15px;
+  font-size: 36px;
+  margin-top: 18px;
+  font-weight: 700;
+  color: #111827;
 }
 
 .message {
-  font-size: 20px;
+  font-size: 18px;
+  color: #4b5563;
+  margin-top: 5px;
 }
 
 .small-btn {
-  margin-top: 10px;
-  padding: 8px 12px;
-  background: #a8c89a;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: #9bcf9a;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.small-btn:hover {
+  background: #7fbf7d;
+  transform: translateY(-2px);
 }
 
 .bottom {
-  margin-top: 50px;
+  margin-top: 60px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 .big-btn {
-  padding: 20px 40px;
-  font-size: 24px;
+  flex: 1;
+  padding: 18px;
+  font-size: 20px;
   background: #c3d8b8;
   border: none;
-  border-radius: 15px;
+  border-radius: 14px;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.big-btn:hover {
+  background: #a9caa0;
+  transform: translateY(-3px);
 }
 
 .logout {
-  padding: 10px 20px;
-  align-self: center;
+  padding: 12px 20px;
+  font-size: 16px;
+  background: #fca5a5;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
+.logout:hover {
+  background: #f87171;
+  transform: translateY(-2px);
+}
