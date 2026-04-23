@@ -1,7 +1,11 @@
 import heroImg from './assets/hero.png'
 import { useEffect, useState } from "react";
 import "./App.css";
-import Log from './Log'; 
+
+// import Nav from './Nav'
+// import Welcome from './Welcome'
+// import Reason from './Reason'
+// import Log from './Log'
 
 function App() {
 
