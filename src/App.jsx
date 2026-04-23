@@ -3,10 +3,10 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import { useEffect, useState } from "react";
 import "./App.css";
-// import Nav from './Nav'
-// import Welcome from './Welcome'
-// import Reason from './Reason'
-// import Log from './Log'
+import Nav from './Nav'
+import Welcome from './Welcome'
+import Reason from './Reason'
+import Log from './Log'
 
 function App() {
 
@@ -39,10 +39,10 @@ function App() {
   return (
   
     <div className="container">
-      {/* <Nav setPage = {setPage} />
+      <Nav setPage = {setPage} />
       {page === "Welcome" && <Welcome />}
       {page === "Reason" && <Reason />}
-      {page === "Log" && <Log />} */}
+      {page === "Log" && <Log />}
       <div className="header">Addiction Management</div>
 
       <div className="main">
