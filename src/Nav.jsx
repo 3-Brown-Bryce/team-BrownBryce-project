@@ -1,4 +1,5 @@
-//import "./Nav.css"
+
+// import "./Nav.css"
 function Nav({ setPage }) {
     return (
         <div className="nav">
@@ -6,7 +7,7 @@ function Nav({ setPage }) {
             <li onClick={() => setPage("Welcome")}>Welcome</li>
             <li onClick={() => setPage("Reason")}>Reason</li>
             <li onClick={() => setPage("Log")}>Log</li>
-            </ul>
+        </ul>
         </div>
     )
 }
