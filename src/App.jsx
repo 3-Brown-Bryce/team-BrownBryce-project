@@ -3,6 +3,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import { useEffect, useState } from "react";
 import "./App.css";
+
 // import Nav from './Nav'
 // import Welcome from './Welcome'
 // import Reason from './Reason'
@@ -39,6 +40,7 @@ function App() {
   return (
   
     <div className="container">
+
       {/* <Nav setPage = {setPage} />
       {page === "Welcome" && <Welcome />}
       {page === "Reason" && <Reason />}
