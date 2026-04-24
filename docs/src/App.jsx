@@ -1,18 +1,25 @@
-import heroImg from './assets/hero.png';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import heroImg from './assets/hero.png'
 import { useEffect, useState } from "react";
 import "./App.css";
-
-import DailyLog from './Log.jsx';
-
+import Nav from './Nav'
+import Welcome from './Welcome'
+import Reason from './Reason'
+import Log from './Log'
 
 function App() {
+
   const [name, setName] = useState("Name");
+
+  
   const [daysClean, setDaysClean] = useState(12);
+
+  
   const [time, setTime] = useState(new Date());
 
   const [page, setPage] = useState("home");
-
-  //clock
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -21,10 +28,6 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  //page switch
-  if (page === "log") {
-    return <DailyLog setPage={setPage} />;
-  }
 
   const seconds = time.getSeconds();
   const minutes = time.getMinutes();
@@ -35,6 +38,7 @@ function App() {
   const hourDeg = hours * 30 + minutes * 0.5;
 
   return (
+  
     <div className="container">
       <Nav setPage = {setPage} />
       {page === "Welcome" && <Welcome />}
@@ -47,9 +51,18 @@ function App() {
 
         <div className="clock-container">
           <div className="clock">
-            <div className="hand hour" style={{ transform: `rotate(${hourDeg}deg)` }} />
-            <div className="hand minute" style={{ transform: `rotate(${minuteDeg}deg)` }} />
-            <div className="hand second" style={{ transform: `rotate(${secondDeg}deg)` }} />
+            <div
+              className="hand hour"
+              style={{ transform: `rotate(${hourDeg}deg)` }}
+            />
+            <div
+              className="hand minute"
+              style={{ transform: `rotate(${minuteDeg}deg)` }}
+            />
+            <div
+              className="hand second"
+              style={{ transform: `rotate(${secondDeg}deg)` }}
+            />
           </div>
 
           <div className="days-number">{daysClean}</div>
@@ -58,24 +71,13 @@ function App() {
 
         <div className="right">
           <div>Clean</div>
-
-          <button
-            className="small-btn"
-            onClick={() => setPage("log")}
-          >
-            Check calendar
-          </button>
+          <button className="small-btn">Check calendar</button>
         </div>
       </div>
 
       <div className="bottom">
         <button className="big-btn">Motivation</button>
         <button className="logout">Log out</button>
-
-        <button onClick={() => setPage("log")}>
-          Daily Log
-        </button>
-
         <button className="big-btn">Reason</button>
       </div>
     </div>
