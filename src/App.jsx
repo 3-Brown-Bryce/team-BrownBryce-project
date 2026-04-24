@@ -7,7 +7,6 @@ import Nav from './Nav.jsx';
 import DailyLog from './Log.jsx';
 
 
-
 function App() {
   const [name, setName] = useState("Name");
   const [daysClean, setDaysClean] = useState(12);
