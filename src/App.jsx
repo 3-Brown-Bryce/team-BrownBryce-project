@@ -7,7 +7,6 @@ import Nav from './Nav.jsx';
 import DailyLog from './Log.jsx';
 
 
-
 function App() {
   const [name, setName] = useState("Name");
   const [daysClean, setDaysClean] = useState(12);
@@ -39,10 +38,7 @@ function App() {
 
   return (
     <div className="container">
-      <Nav setPage = {setPage} />
-      {page === "Welcome" && <Welcome />}
-      {page === "Reason" && <Reason />}
-      {page === "Log" && <Log />}
+
       <div className="header">Addiction Management</div>
 
       <div className="main">
