@@ -1,7 +1,9 @@
 import heroImg from './assets/hero.png';
 import { useEffect, useState } from "react";
 import "./App.css";
-
+import Nav from './Nav.jsx';
+// import Welcome from './Welcome.jsx';
+// import Reason from './Reason.jsx';
 import DailyLog from './Log.jsx';
 
 
