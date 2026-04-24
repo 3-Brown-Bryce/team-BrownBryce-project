@@ -1,3 +1,5 @@
+
+import "./log.css";
 import Journal from './JournalEntry.jsx';
 import Upload from './ImageUpload.jsx';
 import ClaimReward from './Reward.jsx';
