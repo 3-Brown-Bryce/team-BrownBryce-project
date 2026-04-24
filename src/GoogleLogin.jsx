@@ -1,0 +1,91 @@
+import { useEffect, useState } from 'react';
+import { db, auth, provider } from './firebase'; 
+import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'; 
+import { collection, getDocs } from 'firebase/firestore';
+
+function GoogleLogin() { 
+  const [user, setUser] = useState(null);
+
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser); 
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+    const handleLogin = async () => {
+    try {
+      await signInWithPopup(auth, provider); 
+    } catch (error) {
+      console.error('Login failed', error); 
+    }
+  };
+
+   const handleLogout = async () => {
+    try {
+      await signOut(auth); 
+      setUser(null); 
+    } catch (error) {
+      console.error('Logout failed', error); 
+    }
+  };
+
+  const fetchMessages = async () => {
+    const snapshot = await getDocs(collection(db, 'messages')); 
+    const list = snapshot.docs.map(doc => doc.data()); 
+    setMessages(list); 
+  };
+
+  const sendMessage = async () => {
+    if (!input.trim()) return; 
+
+    await addDoc(collection(db, 'messages'), {
+      text: input,
+      name: user.displayName,
+      timestamp: Date.now()
+    });
+
+    setInput(''); 
+    fetchMessages(); 
+  };
+
+  useEffect(() => {
+    if (user) {
+      fetchMessages();
+    }
+  }, [user]);
+
+//   UI!!!
+
+  return (
+     <div>
+        {/* if logged user */}
+      {user ? (
+        <div>
+          <h2>Hello, {user.displayName}</h2>
+          <button onClick={handleLogout}>Log Out</button>
+
+          <ul>
+            {messages.map((msg, i) => (
+              <li key={i}>
+                <strong>{msg.name || 'Anon'}:</strong> {msg.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : ( 
+        // sign in, no user
+        <div>
+          <p>Please log in with Google to continue.</p>
+          <button onClick={handleLogin}>Login with Google</button>
+        </div>
+      )}
+
+     </div>
+  );
+}
+
+export default GoogleLogin;
