@@ -39,10 +39,7 @@ function App() {
 
   return (
     <div className="container">
-      <Nav setPage = {setPage} />
-      {page === "Welcome" && <Welcome />}
-      {page === "Reason" && <Reason />}
-      {page === "Log" && <Log />}
+
       <div className="header">Addiction Management</div>
 
       <div className="main">
