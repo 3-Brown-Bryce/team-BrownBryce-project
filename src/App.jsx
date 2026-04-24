@@ -1,18 +1,11 @@
 import heroImg from './assets/hero.png';
 import { useEffect, useState } from "react";
 import "./App.css";
-<<<<<<< HEAD
 import Nav from './Nav.jsx';
 // import Welcome from './Welcome.jsx';
 // import Reason from './Reason.jsx';
 import DailyLog from './Log.jsx';
-=======
 
-import Nav from './Nav'
-// import Welcome from './Welcome'
-// import Reason from './Reason'
-// import Log from './Log'
->>>>>>> b19ec73c691740b86a2321060662d55228edcec3
 
 
 function App() {
