@@ -1,12 +1,24 @@
 import GoogleLogin from "./GoogleLogin"
+import App from './App.jsx'
+import { useEffect, useState } from "react";
 
+// Move the state inside the component function
 function LoginPage(){
-    return(
-        <div>
-            <h1>Welcome!</h1>
-            <GoogleLogin />
-        </div>
-    )
+  const [page, setPage] = useState("home"); 
+
+  if (page === "App") {
+    return <App setPage={setPage} />;
+  }
+
+  return(
+    <div>
+      <h1>Welcome!</h1>
+      <GoogleLogin />
+      <button onClick={() => setPage("App")}>
+        Guest Login
+      </button>
+    </div>
+  )
 }
 
 export default LoginPage
