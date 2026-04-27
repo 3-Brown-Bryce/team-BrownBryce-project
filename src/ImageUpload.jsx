@@ -1,4 +1,8 @@
+import { useState } from "react"
+
 function Upload(){
+
+
     return(
         <div>
             <p>Upload image here</p>
