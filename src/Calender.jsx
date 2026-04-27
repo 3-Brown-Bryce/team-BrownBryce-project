@@ -1,9 +1,8 @@
-function ViewAwards(){
+function Calendar(){
     return(
         <div>
 
         </div>
     )
 }
-
-export default ViewAwards
+export default Calendar
