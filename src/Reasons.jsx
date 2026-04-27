@@ -8,8 +8,12 @@ function Reasons(){
             <p>Answer these quick questions to personalize your experience</p>
             <AddictionSelection />
             <ReasonSelection />
-        </div>
-    )
+
+            <button onClick={() => setPage("home")}>
+            Back
+          </button>
+    </div>
+  );
 }
 
 export default Reasons;
