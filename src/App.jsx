@@ -1,22 +1,20 @@
-import heroImg from './assets/hero.png'
+import heroImg from './assets/hero.png';
 import { useEffect, useState } from "react";
 import "./App.css";
+import Nav from './Nav.jsx';
 
-import Nav from './Nav'
-// import Welcome from './Welcome'
-// import Reason from './Reason'
-// import Log from './Log'
-
+import DailyLog from './Log.jsx';
+import Motivation from './Motivation.jsx';  
+import Reasons from './Reasons.jsx';         
 
 function App() {
-
   const [name, setName] = useState("Name");
   const [daysClean, setDaysClean] = useState(12);
   const [time, setTime] = useState(new Date());
 
   const [page, setPage] = useState("home");
 
-  //clock
+  // clock
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -25,8 +23,17 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
+  // page switch
   if (page === "log") {
-    return <Log setPage={setPage} />;
+    return <DailyLog setPage={setPage} />;
+  }
+
+  if (page === "motivation") {
+    return <Motivation setPage={setPage} name={name} />;
+  }
+
+  if (page === "reason") {
+    return <Reasons setPage={setPage} />;
   }
 
   const seconds = time.getSeconds();
@@ -39,10 +46,7 @@ function App() {
 
   return (
     <div className="container">
-      <Nav setPage = {setPage} />
-      {page === "Welcome" && <Welcome />}
-      {page === "Reason" && <Reason />}
-      {page === "Log" && <Log />}
+
       <div className="header">Addiction Management</div>
 
       <div className="main">
@@ -50,18 +54,9 @@ function App() {
 
         <div className="clock-container">
           <div className="clock">
-            <div
-              className="hand hour"
-              style={{ transform: `rotate(${hourDeg}deg)` }}
-            />
-            <div
-              className="hand minute"
-              style={{ transform: `rotate(${minuteDeg}deg)` }}
-            />
-            <div
-              className="hand second"
-              style={{ transform: `rotate(${secondDeg}deg)` }}
-            />
+            <div className="hand hour" style={{ transform: `rotate(${hourDeg}deg)` }} />
+            <div className="hand minute" style={{ transform: `rotate(${minuteDeg}deg)` }} />
+            <div className="hand second" style={{ transform: `rotate(${secondDeg}deg)` }} />
           </div>
 
           <div className="days-number">{daysClean}</div>
@@ -71,7 +66,7 @@ function App() {
         <div className="right">
           <div>Clean</div>
 
-          <button 
+          <button
             className="small-btn"
             onClick={() => setPage("log")}
           >
@@ -81,12 +76,25 @@ function App() {
       </div>
 
       <div className="bottom">
-        <button className="big-btn">Motivation</button>
-        <button className="logout">Log out</button>
-        <button onClick={() => setPage("log")}>
-            Daily Log
+        <button 
+          className="big-btn"
+          onClick={() => setPage("motivation")} 
+        >
+          Motivation
         </button>
-        <button className="big-btn">Reason</button>
+
+        <button className="logout">Log out</button>
+
+        <button onClick={() => setPage("log")}>
+          Daily Log
+        </button>
+
+        <button 
+          className="big-btn"
+          onClick={() => setPage("reason")}  
+        >
+          Reason
+        </button>
       </div>
     </div>
   );

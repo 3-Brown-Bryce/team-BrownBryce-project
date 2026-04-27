@@ -11,3 +11,5 @@ function Reasons(){
         </div>
     )
 }
+
+export default Reasons;
