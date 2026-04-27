@@ -1,7 +1,7 @@
 import AddictionSelection from "./AddictionSelection"
 import ReasonSelection from "./ReasonSelection"
 
-function Reasons(){
+function Reasons({ setPage, name }) {
     return(
         <div>
             <h3>Personalize</h3>
@@ -17,3 +17,4 @@ function Reasons(){
 }
 
 export default Reasons;
+
