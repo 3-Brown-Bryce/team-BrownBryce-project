@@ -1,61 +1,24 @@
-import "./LoginPage.css";
-import GoogleLogin from "./GoogleLogin";
+import GoogleLogin from "./GoogleLogin"
+import App from './App.jsx'
+import { useEffect, useState } from "react";
 
+// Move the state inside the component function
+function LoginPage(){
+  const [page, setPage] = useState("home"); 
 
-function LoginPage({ setPage }) {
-  return (
-    <div className="login-container">
-      <div className="login-card">
+  if (page === "App") {
+    return <App setPage={setPage} />;
+  }
 
-
-        <div className="header">
-          <h1>Sign Up</h1>
-        </div>
-
-
-        <div className="content">
-
-
-          {/* LEFT SIDE TEXT */}
-          <div className="text-section">
-            <h2>Congratulations</h2>
-            <p>
-              You've just made a huge step on your journey of quitting your addiction
-            </p>
-          </div>
-
-
-          {/* RIGHT SIDE BUTTONS */}
-          <div className="button-section">
-            <button
-              className="primary-btn"
-              onClick={() => setPage("home")}
-            >
-              Get Started
-            </button>
-
-
-            <button
-              className="secondary-btn"
-              onClick={() => setPage("login")}
-            >
-              Login
-            </button>
-          </div>
-
-
-        </div>
-
-
-        {/* Optional Google Login */}
-        <div className="google-login">
-          <GoogleLogin />
-        </div>
-
-
-      </div>
+  return(
+    <div>
+      <h1>Welcome!</h1>
+      <GoogleLogin />
+      <button onClick={() => setPage("App")}>
+        Guest Login
+      </button>
     </div>
-  );
+  )
 }
 
 

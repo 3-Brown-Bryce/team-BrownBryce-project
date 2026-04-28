@@ -4,17 +4,15 @@ import "./App.css";
 import Nav from './Nav.jsx';
 
 import DailyLog from './Log.jsx';
-import Motivation from './Motivation.jsx';  
-import Reasons from './Reasons.jsx';         
+import LoginPage from './LoginPage.jsx';
 
 function App() {
   const [name, setName] = useState("Name");
-  const [daysClean, setDaysClean] = useState(12);
+  const [daysClean, setDaysClean] = useState(0);
   const [time, setTime] = useState(new Date());
-
   const [page, setPage] = useState("home");
 
-  // clock
+  //clock
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -23,17 +21,12 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  // page switch
+  //page switch
   if (page === "log") {
     return <DailyLog setPage={setPage} />;
   }
-
-  if (page === "motivation") {
-    return <Motivation setPage={setPage} name={name} />;
-  }
-
-  if (page === "reason") {
-    return <Reasons setPage={setPage} />;
+  if (page === "LoginPage") {
+    return <LoginPage setPage={setPage} />;
   }
 
   const seconds = time.getSeconds();
@@ -41,7 +34,7 @@ function App() {
   const hours = time.getHours();
 
   const secondDeg = seconds * 6;
-  const minuteDeg = minutes * 6;
+  const minuteDeg = minutes * 60;
   const hourDeg = hours * 30 + minutes * 0.5;
 
   return (
@@ -76,25 +69,15 @@ function App() {
       </div>
 
       <div className="bottom">
-        <button 
-          className="big-btn"
-          onClick={() => setPage("motivation")} 
-        >
-          Motivation
+        <button className="big-btn">Motivation</button>
+        <button onClick={() => setPage("LoginPage")}>
+          Logout
         </button>
-
-        <button className="logout">Log out</button>
-
         <button onClick={() => setPage("log")}>
           Daily Log
         </button>
 
-        <button 
-          className="big-btn"
-          onClick={() => setPage("reason")}  
-        >
-          Reason
-        </button>
+        <button className="big-btn">Reason</button>
       </div>
     </div>
   );
