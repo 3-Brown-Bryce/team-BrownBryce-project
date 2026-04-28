@@ -1,30 +1,34 @@
-import Journal from './JournalEntry.jsx'
-import Upload from './ImageUpload.jsx'
-import ClaimReward from './Reward.jsx';
-import { useEffect, useState } from "react";
-import App from './App.jsx';
 
-function DailyLog(){
-      const [page, setPage] = useState("Log");
-    if (page === "Home") {
-    return <Log setPage={Home} />;
-  }
-    return(
-        <div>
-            <Upload />
-            <Journal />
-            <ClaimReward />
-            <button 
-            className="small-btn"
-            onClick={() => setPage("App")}
-          >
-            Check calendar
-          </button>
-             <button onClick={() => setPage("Home")}>
-            Back to Home
-            </button>
+import "./log.css";
+import Journal from './JournalEntry.jsx';
+import Upload from './ImageUpload.jsx';
+import ClaimReward from './Reward.jsx';
+
+function DailyLog({ setPage }) {
+  return (
+    <div className="log-page">
+      <h1 className="title">Daily Log</h1>
+
+      <div className="log-card">
+        <div className="left">
+          <Journal />
         </div>
-    )
+
+        <div className="right">
+          <Upload />
+          <Upload />
+          <ClaimReward />
+        </div>
+      </div>
+
+      <button
+        className="small-btn"
+        onClick={() => setPage("home")}
+      >
+        Back to Home
+      </button>
+    </div>
+  );
 }
 
 export default DailyLog;
