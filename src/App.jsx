@@ -2,16 +2,14 @@ import heroImg from './assets/hero.png';
 import { useEffect, useState } from "react";
 import "./App.css";
 import Nav from './Nav.jsx';
-// import Welcome from './Welcome.jsx';
-// import Reason from './Reason.jsx';
-import DailyLog from './Log.jsx';
 
+import DailyLog from './Log.jsx';
+import LoginPage from './LoginPage.jsx';
 
 function App() {
   const [name, setName] = useState("Name");
   const [daysClean, setDaysClean] = useState(0);
   const [time, setTime] = useState(new Date());
-
   const [page, setPage] = useState("home");
 
   //clock
@@ -26,6 +24,9 @@ function App() {
   //page switch
   if (page === "log") {
     return <DailyLog setPage={setPage} />;
+  }
+  if (page === "LoginPage") {
+    return <LoginPage setPage={setPage} />;
   }
 
   const seconds = time.getSeconds();
@@ -69,8 +70,9 @@ function App() {
 
       <div className="bottom">
         <button className="big-btn">Motivation</button>
-        <button className="logout">Log out</button>
-
+        <button onClick={() => setPage("LoginPage")}>
+          Logout
+        </button>
         <button onClick={() => setPage("log")}>
           Daily Log
         </button>
