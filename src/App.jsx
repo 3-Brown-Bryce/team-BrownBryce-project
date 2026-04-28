@@ -5,6 +5,7 @@ import Nav from './Nav.jsx';
 
 import DailyLog from './Log.jsx';
 import LoginPage from './LoginPage.jsx';
+import Calendar from './Calendar.jsx';
 
 function App() {
   const [name, setName] = useState("Name");
@@ -25,8 +26,13 @@ function App() {
   if (page === "log") {
     return <DailyLog setPage={setPage} />;
   }
+
   if (page === "LoginPage") {
     return <LoginPage setPage={setPage} />;
+  }
+
+  if (page === "calendar") {
+    return <Calendar setPage={setPage} />;
   }
 
   const seconds = time.getSeconds();
@@ -34,7 +40,7 @@ function App() {
   const hours = time.getHours();
 
   const secondDeg = seconds * 6;
-  const minuteDeg = minutes * 60;
+  const minuteDeg = minutes * 6; 
   const hourDeg = hours * 30 + minutes * 0.5;
 
   return (
@@ -61,7 +67,7 @@ function App() {
 
           <button
             className="small-btn"
-            onClick={() => setPage("log")}
+            onClick={() => setPage("calendar")}
           >
             Check calendar
           </button>
@@ -70,9 +76,11 @@ function App() {
 
       <div className="bottom">
         <button className="big-btn">Motivation</button>
+
         <button onClick={() => setPage("LoginPage")}>
           Logout
         </button>
+
         <button onClick={() => setPage("log")}>
           Daily Log
         </button>
@@ -84,3 +92,4 @@ function App() {
 }
 
 export default App;
+
