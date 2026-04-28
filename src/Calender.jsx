@@ -1,9 +1,8 @@
-function Timer(){
+function Calendar(){
     return(
         <div>
 
         </div>
     )
 }
-
-export default Timer
+export default Calendar
