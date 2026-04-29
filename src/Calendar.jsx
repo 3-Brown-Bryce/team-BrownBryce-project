@@ -1,8 +1,7 @@
-
 import { useState } from "react";
 import "./Calendar.css";
 
-export default function Calendar() {
+export default function Calendar({ setPage }) {
   const [currentDate, setCurrentDate] = useState(new Date(2026, 3));
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -35,9 +34,15 @@ export default function Calendar() {
 
       <div className="calendar-card">
         <div className="calendar-top">
-          <button className="small-btn" onClick={() => changeMonth(-1)}>Previous</button>
+          <button className="small-btn" onClick={() => changeMonth(-1)}>
+            Previous
+          </button>
+
           <h2>{monthNames[month]} {year}</h2>
-          <button className="small-btn" onClick={() => changeMonth(1)}>Next</button>
+
+          <button className="small-btn" onClick={() => changeMonth(1)}>
+            Next
+          </button>
         </div>
 
         <div className="calendar-grid">
@@ -70,6 +75,15 @@ export default function Calendar() {
         >
           Select Date
         </button>
+
+        {/* back button to main */}
+        <button
+          className="small-btn"
+          onClick={() => setPage("home")}
+        >
+          Back
+        </button>
+
       </div>
     </div>
   );
