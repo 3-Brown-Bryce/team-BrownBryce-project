@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { db, auth, provider } from './firebase'; 
 import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'; 
 import { collection, getDocs } from 'firebase/firestore';
+//We have to have a firebase based user collection system in order for the award claiming firebase to work
+//this is part of that code
 import { doc, setdoc, getDoc } from 'firebase/firestore';
 
 function GoogleLogin() { 
@@ -9,6 +11,7 @@ function GoogleLogin() {
 
   const [messages, setMessages] = useState([]);
 
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser); 
@@ -23,6 +26,29 @@ function GoogleLogin() {
     } catch (error) {
       console.error('Login failed', error); 
     }
+
+    //also part of the user collection code
+    const userDocRef = doc(db, users, user.uid);
+
+    //user collection code
+    const docSnap = await getDoc(userDocRef);
+
+    //user collection field code
+    if(!docSnap.exists()){
+      await setDoc(userDocRef, {
+        uid: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        createdAt: serverTimestamp(),
+        lastLogin: serverTimestamp(),
+      });
+      console.log("New user created in Firestore");
+    }else{
+      await setDoc(userDocRef, { lastLogin: serverTimestamp() }, { merge: true });
+      console.log("Existing user data found:", docSnap.data());
+    }
+    
   };
 
    const handleLogout = async () => {
