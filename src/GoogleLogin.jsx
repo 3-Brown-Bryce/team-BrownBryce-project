@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { db, auth, provider } from './firebase'; 
 import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'; 
 import { collection, getDocs } from 'firebase/firestore';
+import { doc, setdoc, getDoc } from 'firebase/firestore';
 
 function GoogleLogin() { 
   const [user, setUser] = useState(null);
