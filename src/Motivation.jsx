@@ -1,27 +1,24 @@
 
-import { useState } from "react"
+import { useState } from "react";
 import "./Motivation.css";
 
-const Quotes = [
+const quotes = [
     "You're doing great [Name]!",
     "Keep reaching for the stars [Name]!",
     "Your [AddictionSelected] does not define you [Name]!",
     "Recovery takes time [Name]!"
 ];
 
-function Motivation({ setPage, name }) {
-  
-    const [quote, setQuote] = useState(quotes[Math.floor(Math.random() * quotes.length)]);
+function Motivation({ setPage, name }){
+  const [quote, setQuote] = useState(quotes[Math.floor(Math.random() * quotes.length)]);
 
     const generateQuote = () => {
         const randomIndex = Math.floor(Math.random() * quotes.length);
         setQuote(quotes[randomIndex]);
     }
-
-   return (
-    <div className="motivation-page">
-      
-      <div className="header">
+    return(
+      <div className="motivation-page">
+<div className="header">
         <h1>Motivation</h1>
       </div>
 
@@ -49,11 +46,22 @@ function Motivation({ setPage, name }) {
           </button>
 
         </div>
-
-
       </div>
-  );
-}
+      </div>
+      
+      
+
+
+    
+    )
+};
+    
+   
+
+  
+   
+    
+
 
 
 export default Motivation;
