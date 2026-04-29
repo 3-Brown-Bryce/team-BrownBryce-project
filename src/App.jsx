@@ -4,14 +4,10 @@ import "./App.css";
 import Nav from './Nav.jsx';
 
 import DailyLog from './Log.jsx';
-<<<<<<< Updated upstream
 import LoginPage from './LoginPage.jsx';
 import Calendar from './Calendar.jsx';
-=======
-import Motivation from './Motivation.jsx';  
-import Reasons from './Reasons.jsx';         
-import LoginPage from './LoginPage.jsx';
->>>>>>> Stashed changes
+import Motivation from './Motivation.jsx';
+import Reasons from './Reasons.jsx';
 
 function App() {
   const [name, setName] = useState("Name");
@@ -19,7 +15,7 @@ function App() {
   const [time, setTime] = useState(new Date());
   const [page, setPage] = useState("home");
 
-  //clock
+  // clock
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -28,7 +24,7 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  //page switch
+  // page switch
   if (page === "log") {
     return <DailyLog setPage={setPage} />;
   }
@@ -83,13 +79,8 @@ function App() {
       <div className="bottom">
         <button className="big-btn">Motivation</button>
 
-<<<<<<< Updated upstream
         <button onClick={() => setPage("LoginPage")}>
           Logout
-=======
-        <button onClick ={() => setPage("login")}>
-          Log Out
->>>>>>> Stashed changes
         </button>
 
         <button onClick={() => setPage("log")}>
@@ -103,4 +94,3 @@ function App() {
 }
 
 export default App;
-
