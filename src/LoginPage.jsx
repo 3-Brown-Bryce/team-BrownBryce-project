@@ -1,13 +1,9 @@
 import GoogleLogin from "./GoogleLogin";
-import App from "./App.jsx";
 import { useState } from "react";
 
-// Move the state inside the component function
-function LoginPage(){
-  const [page, setPage] = useState("home"); 
-
-  if (page === "App") {
-    return <App setPage={setPage} />;
+function LoginPage({ setPage, name }) {
+    if (page === "home") {
+    return <App />;
   }
 
   return (
