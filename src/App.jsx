@@ -89,7 +89,6 @@ function App() {
 =======
         <button onClick ={() => setPage("login")}>
           Log Out
->>>>>>> Stashed changes
         </button>
 
         <button onClick={() => setPage("log")}>
