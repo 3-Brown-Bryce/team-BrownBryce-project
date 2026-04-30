@@ -12,8 +12,10 @@ function LoginPage() {
   return (
     <div>
       <h1>Welcome!</h1>
+
       <GoogleLogin />
-      <button onClick={() => setPage("App")}>
+
+      <button onClick={() => setPage("home")}>
         Guest Login
       </button>
     </div>
