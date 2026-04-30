@@ -6,7 +6,8 @@ import { collection, getDocs } from 'firebase/firestore';
 //this is part of that code
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 
-function GoogleLogin({ onSignedIn }) { 
+function GoogleLogin() { 
+  
   const [user, setUser] = useState(null);
 
   const [messages, setMessages] = useState([]);
