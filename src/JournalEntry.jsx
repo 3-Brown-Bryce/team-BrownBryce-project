@@ -10,6 +10,7 @@ function Journal(){
     const handleSave = () => {
         console.log("Input saved:", inputValue);
         alert(`You saved: ${inputValue}`);
+    }
 
     return(
         <div>
@@ -24,7 +25,7 @@ function Journal(){
         </div>
     )
 }
-}
+
 
 
 export default Journal

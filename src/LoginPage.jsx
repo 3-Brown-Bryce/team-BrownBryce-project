@@ -1,6 +1,15 @@
 import GoogleLogin from "./GoogleLogin";
+import App from "./App.jsx";
+import { useState } from "react";
 
-function LoginPage({ setPage, name }) {
+// Move the state inside the component function
+function LoginPage(){
+  const [page, setPage] = useState("home"); 
+
+  if (page === "App") {
+    return <App setPage={setPage} />;
+  }
+
   return (
     <div>
       <h1>Welcome!</h1>
@@ -11,7 +20,7 @@ function LoginPage({ setPage, name }) {
         Guest Login
       </button>
     </div>
-  );
+  )
 }
 
 export default LoginPage;
