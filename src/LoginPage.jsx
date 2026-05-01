@@ -2,8 +2,9 @@ import GoogleLogin from "./GoogleLogin";
 import App from "./App.jsx";
 import { useState } from "react";
 
-function LoginPage() {
-  const [page, setPage] = useState("home");
+// Move the state inside the component function
+function LoginPage(){
+  const [page, setPage] = useState("home"); 
 
   if (page === "App") {
     return <App setPage={setPage} />;
@@ -19,7 +20,7 @@ function LoginPage() {
         Guest Login
       </button>
     </div>
-  );
+  )
 }
 
 export default LoginPage;
