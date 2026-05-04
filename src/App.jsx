@@ -2,13 +2,11 @@ import heroImg from './assets/hero.png';
 import { useEffect, useState } from "react";
 import "./App.css";
 import Nav from './Nav.jsx';
-
 import DailyLog from './Log.jsx';
 import LoginPage from './LoginPage.jsx';
 import Calendar from './Calendar.jsx';
 import Motivation from './Motivation.jsx';  
 import Reasons from './Reasons.jsx';         
-import LoginPage from './LoginPage.jsx';
 
 function App() {
   const [name, setName] = useState("Name");
