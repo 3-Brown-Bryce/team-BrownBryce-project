@@ -15,7 +15,7 @@ function App() {
   const [time, setTime] = useState(new Date());
   const [page, setPage] = useState("home");
 
-  //clock
+  // clock
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -24,7 +24,7 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  //page switch
+  // page switch
   if (page === "log") {
     return <DailyLog setPage={setPage} />;
   }
@@ -94,4 +94,3 @@ function App() {
 }
 
 export default App;
-
