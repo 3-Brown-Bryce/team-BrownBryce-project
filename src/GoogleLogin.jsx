@@ -28,7 +28,7 @@ function GoogleLogin() {
     }
 
     //also part of the user collection code
-    const userDocRef = doc(db, users, user.uid);
+    const userDocRef = doc(db, 'users', user.uid);
 
     //user collection code
     const docSnap = await getDoc(userDocRef);

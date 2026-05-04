@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./Motivation.css";
 
 const quotes = [
-  "You're doing great!",
-  "Keep reaching for the stars!",
-  "Your addiction does not define you!",
-  "Recovery takes time!"
+  "You're doing great [name]!",
+  "Keep reaching for the stars [name]!",
+  "Your addiction does not define you [name]!",
+  "Recovery takes time [name]!"
 ];
 
 function Motivation({ setPage, name = "friend" }) {
