@@ -39,9 +39,12 @@ function GoogleLogin() {
     }
 
     //also part of the user collection code
+<<<<<<< HEAD
     <div>
     {shouldRender ? <p>Loaded after 2 seconds!</p> : <p>Loading...</p>}
   </div>
+=======
+>>>>>>> b8c9431b5f721595efa9bfe73010e515bf9147f3
     const userDocRef = doc(db, 'users', user.uid);
 
     //user collection code

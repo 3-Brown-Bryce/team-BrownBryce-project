@@ -1,4 +1,23 @@
+import { useState } from "react";
+import { db } from "./firebase";
+import { collection,addDoc } from "firebase/firestore"
+
 function AddictionSelection(){
+
+    const [text,setText] = useState("");
+
+    const handleSave = async() => {
+        try{
+            await addDoc(collection(db,"Addiciton")),{
+                content: text
+            };
+            setText("");
+            alert("Saved!");
+        } catch(e){
+            console.error("Error adding document", e);
+        }
+    };
+
     return(
         <div>
             <section>
@@ -13,8 +32,11 @@ function AddictionSelection(){
             </section>
             <section>
                 <p>Do you have an addiction that wasn't listed? please enter it here:</p>
-                <input></input>
-                <button>enter</button>
+                <input 
+                value={text}
+                onChange={(e)=> setText(e.target.value)}
+                placeholder = "Input a reason"></input>
+                <button onClick = {handleSave}>enter</button>
             </section>
         </div>
     )
