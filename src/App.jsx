@@ -35,7 +35,7 @@ function App() {
         setName(user.email.split('@')[0]);
       } else {
         setName("Name");
-      }H
+      }
     });
     return () => unsub();
   }, []);

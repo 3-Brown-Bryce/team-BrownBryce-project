@@ -1,20 +1,24 @@
-import { useState } from "react";
-import { db } from "./firebase";
-import { collection,addDoc } from "firebase/firestore"
+import { useState, useEffect } from "react";
+import { db, auth } from "./firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 function AddictionSelection(){
 
-    const [text,setText] = useState("");
+    const [text, setText] = useState("");
 
     const handleSave = async() => {
-        try{
-            await addDoc(collection(db,"Addiction")),{
-                content: text
-            };
+        try {
+            const user = auth.currentuser;
+            if (!user) {
+                alert("You are not logged in, could not save.");
+                return;
+            }
+            await setDoc(doc(db, "users", user.uid), { addiction: text }, { merge: true });
             setText("");
             alert("Saved!");
-        } catch(e){
-            console.error("Error adding document", e);
+        } catch (error) {
+            console.error(error);
         }
     };
 
@@ -22,23 +26,23 @@ function AddictionSelection(){
         <div>
             <section>
                 <p>please select an addiction:</p>
-                <button>scrolling</button>
+                <button onClick={ text = "scrolling" }>scrolling</button>
                 <button>video games</button>
                 <button>procrastination</button>
                 <button>fast foods</button>
                 <button>sugar</button>
-                <button>caffiene</button>
+                <button>caffeine</button>
                 <button>skin picking</button>
             </section>
             <section>
                 <p>Do you have an addiction that wasn't listed? please enter it here:</p>
                 <input 
                 value={text}
-                onChange={(e)=> setText(e.target.value)}
+                onChange={(e) => setText(e.target.value)}
                 placeholder = "Input a reason"></input>
                 <button onClick = {handleSave}>enter</button>
             </section>
         </div>
     )
 }
-export default AddictionSelection
+export default AddictionSelection;
