@@ -26,7 +26,7 @@ function Motivation({ setPage, name = "friend" }) {
       </div>
 
       <h2 className="subtitle">
-        {quote.replaceAll("[Name]", name)}
+        {quote.replaceAll("[name]", name)}
       </h2>
 
       <button onClick={generateQuote}>
