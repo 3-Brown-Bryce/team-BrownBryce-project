@@ -23,8 +23,8 @@ function LoginPage() {
   }
 
   return (
-    <div>
-      <h1>Welcome!</h1>
+    <div className="login-page">
+      <h1 className="login-title">Welcome!</h1>
 
       <GoogleLogin onSignedIn={() => setPage("App")}/>
 
