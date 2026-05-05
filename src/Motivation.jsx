@@ -26,7 +26,7 @@ function Motivation({ setPage, name = "friend" }) {
       </div>
 
       <h2 className="subtitle">
-        {quote.replaceAll("[Name]", name)}
+        {quote.replaceAll("[name]", name)}
       </h2>
 
       <button onClick={generateQuote}>
@@ -35,7 +35,7 @@ function Motivation({ setPage, name = "friend" }) {
 
       <p>You got some rewards</p>
 
-      <button>
+      <button type="button" onClick={() => setPage("awards")}>
         View rewards
       </button>
 
@@ -43,11 +43,13 @@ function Motivation({ setPage, name = "friend" }) {
 
         <div className="reward-card">
           <h3>You got some awards!</h3>
-          <button className="view-btn">View awards</button>
+          <button type="button" className="view-btn" onClick={() => setPage("awards")}>
+            View awards
+          </button>
         </div>
 
         <div className="side-buttons">
-          <button className="calendar-btn">
+          <button type="button" className="calendar-btn" onClick={() => setPage("calendar")}>
             Check calendar
           </button>
 

@@ -109,3 +109,14 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* page title on login — not the light heading color from dark mode */
+.login-title {
+  color: #08060d;
+}
+
+@media (prefers-color-scheme: dark) {
+  .login-title {
+    color: #9ca3af;
+  }
+}

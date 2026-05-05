@@ -14,12 +14,12 @@ Students are often aware they're addicted to something but can't find a way to m
 
 **Team member names**
 
-Bryce - Project manager
+Bryce - Project Manager
 
-Sammy - UX researcher and needfinder
+Sammy - UX Researcher and Needfinder
 
-Harper - UX/UI designer
+Harper - UX/UI Designer
 
-Vivian - Frontend developer
+Vivian - Frontend Developer
 
-Ariana - Backend developer
+Ariana - Backend Developer
