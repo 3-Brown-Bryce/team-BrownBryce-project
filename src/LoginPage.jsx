@@ -14,9 +14,9 @@ function LoginPage(){
     <div>
       <h1>Welcome!</h1>
 
-      <GoogleLogin />
+      <GoogleLogin onSignedIn={() => setPage("App")}/>
 
-      <button onClick={() => setPage("home")}>
+      <button onClick={() => setPage("App")}>
         Guest Login
       </button>
     </div>

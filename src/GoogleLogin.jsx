@@ -4,9 +4,9 @@ import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 //We have to have a firebase based user collection system in order for the award claiming firebase to work
 //this is part of that code
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 
-function GoogleLogin() { 
+function GoogleLogin({ onSignedIn }) { 
   const [user, setUser] = useState(null);
 
   const [messages, setMessages] = useState([]);
@@ -25,30 +25,36 @@ function GoogleLogin() {
       await signInWithPopup(auth, provider); 
     } catch (error) {
       console.error('Login failed', error); 
+      return
     }
 
     //also part of the user collection code
-    const userDocRef = doc(db, 'users', user.uid);
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser) return;
+    const userDocRef = doc(db, 'users', firebaseUser.uid)
 
-    //user collection code
-    const docSnap = await getDoc(userDocRef);
-
-    //user collection field code
-    if(!docSnap.exists()){
-      await setDoc(userDocRef, {
-        uid: user.uid,
-        displayName: user.displayName,
-        email: user.email,
-        photoURL: user.photoURL,
-        createdAt: serverTimestamp(),
-        lastLogin: serverTimestamp(),
-      });
-      console.log("New user created in Firestore");
-    }else{
-      await setDoc(userDocRef, { lastLogin: serverTimestamp() }, { merge: true });
-      console.log("Existing user data found:", docSnap.data());
+    try {
+      const docSnap = await getDoc(userDocRef);
+      if (!docSnap.exists) {
+        await setDoc(userDocRef, {
+          uid: firebaseUser.uid,
+          displayName: firebaseUser.displayName,
+          email: firebaseUser.email,
+          photoURL: firebaseUser.photoURL,
+          createdAt: serverTimestamp(),
+          lastLogin: serverTimestamp(),
+        });
+        console.log("Created a new user");
+      } else {
+        await setDoc(userDocRef, { lastLogin: serverTimestamp() }, { merge: true });
+        console.log('Existing user data found:', docSnap.data());
+      }
+    } catch (error) {
+      console.error(error)
+      return;
     }
-    
+
+    onSignedIn?.();
   };
 
    const handleLogout = async () => {
