@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import { db, auth } from "./firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
-function AddictionSelection(){
-
+function AddictionSelection({ initialAddiction = "", onAddictionSaved }){
     const [text, setText] = useState("");
 
-    const handleSave = async() => {
+    useEffect(() => {
+        setText(initialAddiction);
+    }, [initialAddiction]);
+
+    const handleSave = async () => {
         try {
-            const user = auth.currentuser;
+            const user = auth.currentUser;
             if (!user) {
                 alert("You are not logged in, could not save.");
                 return;
@@ -26,13 +29,13 @@ function AddictionSelection(){
         <div>
             <section>
                 <p>please select an addiction:</p>
-                <button onClick={ text = "scrolling" }>scrolling</button>
-                <button>video games</button>
-                <button>procrastination</button>
-                <button>fast foods</button>
-                <button>sugar</button>
-                <button>caffeine</button>
-                <button>skin picking</button>
+                <button onClick={() => setText("scrolling")}>scrolling</button>
+                <button onClick={() => setText("video games")}>video games</button>
+                <button onClick={() => setText("procrastination")}>procrastination</button>
+                <button onClick={() => setText("fast foods")}>fast foods</button>
+                <button onClick={() => setText("sugar")}>sugar</button>
+                <button onClick={() => setText("caffeine")}>caffeine</button>
+                <button onClick={() => setText("skin picking")}>skin picking</button>
             </section>
             <section>
                 <p>Do you have an addiction that wasn't listed? please enter it here:</p>
@@ -40,7 +43,7 @@ function AddictionSelection(){
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder = "Input a reason"></input>
-                <button onClick = {handleSave}>enter</button>
+                <button onClick = {handleSave}>save</button>
             </section>
         </div>
     )

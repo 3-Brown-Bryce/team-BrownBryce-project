@@ -1,12 +1,35 @@
 import AddictionSelection from "./AddictionSelection"
 import ReasonSelection from "./ReasonSelection"
+import { useState, useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "./firebase";
 
 function Reasons({ setPage, name }) {
+
+  const [currentAddiction, setCurrentAddiction] = useState("");
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        setCurrentAddiction("");
+        return
+      }
+      const snap = await getDoc(doc(db, "users", user.uid));
+      if (snap.exists && typeof snap.data().addiction === "string") {
+        setCurrentAddiction(snap.data().addiction);
+      } else {
+        setCurrentAddiction("");
+      }
+    });
+    return () => unsub();
+  }, []);
+
     return(
         <div>
             <h3>Personalize</h3>
             <p>Answer these quick questions to personalize your experience</p>
-            <AddictionSelection />
+            <AddictionSelection initialAddiction={currentAddiction} onAddictionSaved={setCurrentAddiction}/>
             <ReasonSelection />
 
             <button onClick={() => setPage("home")}>
