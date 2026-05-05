@@ -64,9 +64,7 @@ function GoogleLogin({ onSignedIn }) {
     } catch (error) {
       console.error(error);
       return;
-    <div>
-    {shouldRender ? <p>Loaded after 2 seconds!</p> : <p>Loading...</p>}
-  </div>
+
     const userDocRef = doc(db, 'users', user.uid);
 
     //user collection code
@@ -91,7 +89,7 @@ function GoogleLogin({ onSignedIn }) {
 
     onSignedIn?.();
   };
-
+    }
    const handleLogout = async () => {
     try {
       await signOut(auth); 
@@ -156,4 +154,5 @@ function GoogleLogin({ onSignedIn }) {
   );
 }
 
-export default GoogleLogin;
+
+export default GoogleLogin
