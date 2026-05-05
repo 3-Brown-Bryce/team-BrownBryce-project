@@ -6,7 +6,6 @@ import { auth, db } from "./firebase";
 import { streakIsActive } from "./streakUtils";
 import "./App.css";
 import Nav from './Nav.jsx';
-
 import DailyLog from './Log.jsx';
 import Calendar from './Calendar.jsx';
 import Motivation from './Motivation.jsx';

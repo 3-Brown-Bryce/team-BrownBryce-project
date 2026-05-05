@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { db, auth, provider } from './firebase'; 
 import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'; 
 import { collection, getDocs } from 'firebase/firestore';
@@ -11,7 +11,16 @@ function GoogleLogin({ onSignedIn }) {
 
   const [messages, setMessages] = useState([]);
 
-  
+  const DelayedComponent = () => {
+    const [shouldRender, setShouldRender] = useState(false);
+    useEffect(() => {
+      // Set a timer to change state after 2 seconds
+      const timer = setTimeout(() => {
+        setShouldRender(true);
+      }, 2000);  
+      return () => clearTimeout(timer);
+    }, []);
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser); 
@@ -55,6 +64,29 @@ function GoogleLogin({ onSignedIn }) {
     } catch (error) {
       console.error(error);
       return;
+    <div>
+    {shouldRender ? <p>Loaded after 2 seconds!</p> : <p>Loading...</p>}
+  </div>
+    const userDocRef = doc(db, 'users', user.uid);
+
+    //user collection code
+    const docSnap = await getDoc(userDocRef);
+
+    //user collection field code
+    if(!docSnap.exists()){
+      await setDoc(userDocRef, {
+        uid: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        createdAt: serverTimestamp(),
+        lastLogin: serverTimestamp(),
+      });
+      console.log("New user created in Firestore");
+    }else{
+      await setDoc(userDocRef, { lastLogin: serverTimestamp() }, { merge: true });
+      console.log("Existing user data found:", docSnap.data());
+
     }
 
     onSignedIn?.();
