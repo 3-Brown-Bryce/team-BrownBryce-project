@@ -80,7 +80,7 @@ function App() {
   }
 
   if (page === "reason") {
-    return <Reasons setPage={setPage} />;
+    return <Reasons setPage={setPage} name={name} />;
   }
 
   if (page === "motivation") {
@@ -88,7 +88,7 @@ function App() {
   }
 
   if (page === "awards") {
-    return <Awards setPage={setPage} />;
+    return <Awards setPage={setPage} name={name} />;
   }
 
   const seconds = time.getSeconds();

@@ -5,7 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./firebase";
 
-function Reasons({ setPage }) {
+function Reasons({ setPage, name }) {
   const [currentAddiction, setCurrentAddiction] = useState("");
   const [currentQuitReason, setCurrentQuitReason] = useState("");
 
@@ -38,7 +38,9 @@ function Reasons({ setPage }) {
   return (
     <div>
       <h3>Personalize</h3>
-      <p>Answer these quick questions to personalize your experience</p>
+      <p>
+        {name}, answer these quick questions to personalize your experience.
+      </p>
       <AddictionSelection
         initialAddiction={currentAddiction}
         onAddictionSaved={setCurrentAddiction}

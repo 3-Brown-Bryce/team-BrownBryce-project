@@ -4,7 +4,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { auth, db } from "./firebase";
 import "./awards.css";
 
-function Awards({ setPage }) {
+function Awards({ setPage, name }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -47,7 +47,9 @@ function Awards({ setPage }) {
   return (
     <div className="awards-page">
       <h1 className="awards-title">Awards</h1>
-      <p className="awards-sub">Day 1 through day 30 on your streak (from the daily log).</p>
+      <p className="awards-sub">
+        {name}, day 1 through day 30 on your streak (from the daily log).
+      </p>
 
       {loading ? (
         <p>Loading...</p>
