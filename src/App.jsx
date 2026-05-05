@@ -1,5 +1,7 @@
 import heroImg from './assets/hero.png';
 import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase"
 import "./App.css";
 import Nav from './Nav.jsx';
 
@@ -22,6 +24,20 @@ function App() {
     }, 1000);
 
     return () => clearInterval(timer);
+  }, []);
+
+  // greeting
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (user) => {
+      if (user?.displayName) {
+        setName(user.displayName);
+      } else if (user?.email) {
+        setName(user.email.split('@')[0]);
+      } else {
+        setName("Name")
+      }H
+    });
+    return () => unsub();
   }, []);
 
   // page switch
