@@ -3,7 +3,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "./firebase";
 import { formatLocalDate, addDays } from "./streakUtils";
 
-function Journal() {
+function Journal({ onJournalSaved }) {
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (event) => {
@@ -57,6 +57,7 @@ function Journal() {
       );
       alert(`Journal saved! Your streak is ${next} days`);
       setInputValue("");
+      onJournalSaved?.({ streak: next });
     } catch (e) {
       console.error(e);
       alert("Could not save. Try again.");

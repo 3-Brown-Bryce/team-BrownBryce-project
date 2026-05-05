@@ -1,0 +1,76 @@
+.awards-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.awards-title {
+  margin: 0 0 0.5rem;
+}
+
+.awards-sub {
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.75rem 1.25rem;
+  justify-items: center;
+}
+
+.award-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 160px;
+}
+
+.award-badge-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  display: block;
+}
+
+.award-badge-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0.2rem;
+  color: #000;
+  line-height: 1.2;
+}
+
+.award-badge-details {
+  font-size: 0.75rem;
+  margin: 0;
+  color: #555;
+  line-height: 1.35;
+}
+
+.award-badge-meta {
+  font-size: 0.7rem;
+  margin: 0.35rem 0 0;
+  color: #888;
+}
+
+.awards-back {
+  margin-top: 1.5rem;
+}
+
+.claim-reward {
+  margin-top: 0.5rem;
+}
+
+.claim-reward-title {
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+.claim-reward-msg {
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}

@@ -11,6 +11,7 @@ import DailyLog from './Log.jsx';
 import Calendar from './Calendar.jsx';
 import Motivation from './Motivation.jsx';
 import Reasons from './Reasons.jsx';
+import Awards from './Awards.jsx';
 import LoginPage from './LoginPage.jsx';
 
 function App() {
@@ -86,6 +87,10 @@ function App() {
     return <Motivation setPage={setPage} name={name} />;
   }
 
+  if (page === "awards") {
+    return <Awards setPage={setPage} />;
+  }
+
   const seconds = time.getSeconds();
   const minutes = time.getMinutes();
   const hours = time.getHours();
@@ -141,6 +146,10 @@ function App() {
 
         <button onClick={() => setPage("log")}>
           Daily Log
+        </button>
+
+        <button onClick={() => setPage("awards")} className="big-btn">
+          Awards
         </button>
 
         <button onClick={() => setPage("reason")} className="big-btn">
