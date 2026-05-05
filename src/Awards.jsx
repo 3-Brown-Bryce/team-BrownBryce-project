@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { auth, db } from "./firebase";
 import "./awards.css";
 
@@ -20,24 +20,18 @@ function Awards({ setPage }) {
 
       setLoading(true);
       try {
-        const q = query(
-          collection(db, "awards"),
-          where("userId", "==", user.uid),
-          orderBy("earnedAt", "desc")
-        );
+        const q = query(collection(db, "awards"), where("userId", "==", user.uid));
         const snap = await getDocs(q);
-        setItems(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
-      } catch (e) {
-        console.error("Error adding document", e);
-        const q2 = query(collection(db, "awards"), where("userId", "==", user.uid));
-        const snap2 = await getDocs(q2);
-        const rows = snap2.docs.map((d) => ({ id: d.id, ...d.data() }));
+        const rows = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
         rows.sort((a, b) => {
           const ta = a.earnedAt?.toMillis?.() ?? 0;
           const tb = b.earnedAt?.toMillis?.() ?? 0;
           return tb - ta;
         });
         setItems(rows);
+      } catch (e) {
+        console.error("Error adding document", e);
+        setItems([]);
       } finally {
         setLoading(false);
       }

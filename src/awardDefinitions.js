@@ -9,11 +9,13 @@ function ordinal(n) {
   return `${n}th`;
 }
 
+// milestoneKey is the streak step (day-1 ... day-30), same for every user — not a unique id
 export function getDayAward(day) {
   if (day < 1 || day > MAX_AWARD_DAY) return null;
   const ord = ordinal(day);
+  const milestoneKey = `day-${day}`;
   return {
-    id: `day-${day}`,
+    milestoneKey,
     title: `${ord} Day Clean`,
     details: `You made it ${day} clean day${day === 1 ? "" : "s"} in a row. Keep it up!`,
     imageUrl: `https://placehold.co/400x240/2563eb/ffffff/png?text=${encodeURIComponent(`${ord} Day Clean`)}`,
