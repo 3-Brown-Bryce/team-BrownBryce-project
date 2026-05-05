@@ -13,6 +13,12 @@ function ClaimReward(){
                   const userSnap = await getDoc(userRef);
                   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
             
+                // if user
+                // if user hasn't claimed
+                // update or add claim date (merge)
+                // make award in the awards collection assign random uid, all description stuff 
+                // add user.awards.awardID (under the awards) (look this up)
+
                   if (userSnap.exists()) {
                     const data = userSnap.data();
                     if (data.lastClaimed !== today) {

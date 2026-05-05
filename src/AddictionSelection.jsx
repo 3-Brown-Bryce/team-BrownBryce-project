@@ -41,7 +41,7 @@ function AddictionSelection({ initialAddiction = "", onAddictionSaved }){
                 <input 
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                placeholder = "Input a reason"></input>
+                placeholder = "Input an addiction"></input>
                 <button onClick = {handleSave}>save</button>
             </section>
         </div>

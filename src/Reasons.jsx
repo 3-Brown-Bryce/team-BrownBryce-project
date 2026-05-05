@@ -26,6 +26,23 @@ function Reasons({ setPage, name }) {
     return () => unsub();
   }, []);
 
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        setCurrentReason("");
+        return
+      }
+      const snap = await getDoc(doc(db, "users", user.uid));
+      if (snap.exists) {
+        const data = snap.data()
+        setCurrentAddiction(typeof data.reason === "string" ? data.reason : "");
+      } else {
+        setCurrentReason("");
+      }
+    });
+    return () => unsub();
+  }, []);
+
     return(
         <div>
             <h3>Personalize</h3>
