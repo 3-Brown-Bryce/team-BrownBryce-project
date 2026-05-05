@@ -31,18 +31,21 @@ function GoogleLogin({ onSignedIn }) {
     //also part of the user collection code
     const firebaseUser = auth.currentUser;
     if (!firebaseUser) return;
-    const userDocRef = doc(db, 'users', firebaseUser.uid)
+    const userDocRef = doc(db, 'users', firebaseUser.uid);
 
     try {
       const docSnap = await getDoc(userDocRef);
-      if (!docSnap.exists) {
+      if (!docSnap.exists || !docSnap.data()?.uid) {
+        const previous = docSnap.exists ? docSnap.data() : null;
         await setDoc(userDocRef, {
           uid: firebaseUser.uid,
           displayName: firebaseUser.displayName,
           email: firebaseUser.email,
           photoURL: firebaseUser.photoURL,
-          createdAt: serverTimestamp(),
+          createdAt: previous?.createdAt ?? serverTimestamp(),
           lastLogin: serverTimestamp(),
+          reason: "",
+          addiction: "",
         });
         console.log("Created a new user");
       } else {
@@ -50,7 +53,7 @@ function GoogleLogin({ onSignedIn }) {
         console.log('Existing user data found:', docSnap.data());
       }
     } catch (error) {
-      console.error(error)
+      console.error(error);
       return;
     }
 
