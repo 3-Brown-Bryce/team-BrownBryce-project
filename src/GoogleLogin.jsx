@@ -26,9 +26,41 @@ function GoogleLogin() {
     } catch (error) {
       console.error('Login failed', error); 
     }
+  
 
     //also part of the user collection code
+<<<<<<< Updated upstream
     const userDocRef = doc(db, users, user.uid);
+=======
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser) return;
+    const userDocRef = doc(db, 'users', firebaseUser.uid);
+
+    try {
+      const docSnap = await getDoc(userDocRef);
+      if (!docSnap.exists || !docSnap.data()?.uid) {
+        const previous = docSnap.exists ? docSnap.data() : null;
+        await setDoc(userDocRef, {
+          uid: firebaseUser.uid,
+          displayName: firebaseUser.displayName,
+          email: firebaseUser.email,
+          photoURL: firebaseUser.photoURL,
+          createdAt: previous?.createdAt ?? serverTimestamp(),
+          lastLogin: serverTimestamp(),
+          reason: "",
+          addiction: "",
+        });
+        console.log("Created a new user");
+      } else {
+        await setDoc(userDocRef, { lastLogin: serverTimestamp() }, { merge: true });
+        console.log('Existing user data found:', docSnap.data());
+      }
+    } catch (error) {
+      console.error(error);
+      return;
+
+    const userDocRef = doc(db, 'users', user.uid);
+>>>>>>> Stashed changes
 
     //user collection code
     const docSnap = await getDoc(userDocRef);
@@ -50,7 +82,7 @@ function GoogleLogin() {
     }
     
   };
-
+    }
    const handleLogout = async () => {
     try {
       await signOut(auth); 
@@ -114,5 +146,6 @@ function GoogleLogin() {
      </div>
   );
 }
+
 
 export default GoogleLogin;
