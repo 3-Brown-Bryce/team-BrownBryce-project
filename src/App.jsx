@@ -1,7 +1,7 @@
 import heroImg from './assets/hero.png';
 import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase"
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "./firebase";
 import "./App.css";
 import Nav from './Nav.jsx';
 
@@ -34,7 +34,7 @@ function App() {
       } else if (user?.email) {
         setName(user.email.split('@')[0]);
       } else {
-        setName("Name")
+        setName("Name");
       }H
     });
     return () => unsub();
@@ -95,7 +95,11 @@ function App() {
       <div className="bottom">
         <button className="big-btn">Motivation</button>
 
-        <button onClick={() => setPage("LoginPage")}>
+        <button onClick={async () => {
+          await signOut(auth);
+          setPage("LoginPage");
+        }}
+        >
           Logout
         </button>
 
@@ -103,7 +107,7 @@ function App() {
           Daily Log
         </button>
 
-        <button className="big-btn">Reason</button>
+        <button onClick={() => setPage("reason")} className="big-btn">Reason</button>
       </div>
     </div>
   );
