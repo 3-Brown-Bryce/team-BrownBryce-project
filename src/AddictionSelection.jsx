@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { db, auth } from "./firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
 
 function AddictionSelection({ initialAddiction = "", onAddictionSaved }){
     const [text, setText] = useState("");
@@ -18,7 +17,7 @@ function AddictionSelection({ initialAddiction = "", onAddictionSaved }){
                 return;
             }
             await setDoc(doc(db, "users", user.uid), { addiction: text }, { merge: true });
-            setText("");
+            onAddictionSaved?.(value);
             alert("Saved!");
         } catch (error) {
             console.error(error);

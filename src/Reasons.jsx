@@ -16,8 +16,9 @@ function Reasons({ setPage, name }) {
         return
       }
       const snap = await getDoc(doc(db, "users", user.uid));
-      if (snap.exists && typeof snap.data().addiction === "string") {
-        setCurrentAddiction(snap.data().addiction);
+      if (snap.exists) {
+        const data = snap.data()
+        setCurrentAddiction(typeof data.addiction === "string" ? data.addiction : "");
       } else {
         setCurrentAddiction("");
       }

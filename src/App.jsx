@@ -101,7 +101,7 @@ function App() {
       </div>
 
       <div className="bottom">
-        <button onClick={() => setPage("motivation", name={name})} className="big-btn">Motivation</button>
+        <button onClick={() => setPage("motivation")} className="big-btn">Motivation</button>
 
         <button onClick={async () => {
           await signOut(auth);
@@ -115,7 +115,7 @@ function App() {
           Daily Log
         </button>
 
-        <button onClick={() => setPage("reason", name={name})} className="big-btn">Reason</button>
+        <button onClick={() => setPage("reason")} className="big-btn">Reason</button>
 
         
       </div>
