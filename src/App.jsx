@@ -53,6 +53,14 @@ function App() {
     return <Calendar setPage={setPage} />;
   }
 
+  if (page == "reason") {
+    return <Reasons setPage={setPage} />;
+  }
+
+  if (page = "motivation") {
+    return <Motivation setPage={setPage} />
+  }
+
   const seconds = time.getSeconds();
   const minutes = time.getMinutes();
   const hours = time.getHours();
@@ -93,7 +101,7 @@ function App() {
       </div>
 
       <div className="bottom">
-        <button className="big-btn">Motivation</button>
+        <button onClick={() => setPage("motivation")} className="big-btn">Motivation</button>
 
         <button onClick={async () => {
           await signOut(auth);
@@ -108,6 +116,8 @@ function App() {
         </button>
 
         <button onClick={() => setPage("reason")} className="big-btn">Reason</button>
+
+        
       </div>
     </div>
   );

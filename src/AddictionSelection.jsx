@@ -8,7 +8,7 @@ function AddictionSelection(){
 
     const handleSave = async() => {
         try{
-            await addDoc(collection(db,"Addiciton")),{
+            await addDoc(collection(db,"Addiction")),{
                 content: text
             };
             setText("");
@@ -21,7 +21,7 @@ function AddictionSelection(){
     return(
         <div>
             <section>
-                <p>please select an addiciton:</p>
+                <p>please select an addiction:</p>
                 <button>scrolling</button>
                 <button>video games</button>
                 <button>procrastination</button>
