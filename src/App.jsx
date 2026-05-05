@@ -53,11 +53,11 @@ function App() {
     return <Calendar setPage={setPage} />;
   }
 
-  if (page == "reason") {
+  if (page === "reason") {
     return <Reasons setPage={setPage} />;
   }
 
-  if (page = "motivation") {
+  if (page === "motivation") {
     return <Motivation setPage={setPage} />
   }
 
