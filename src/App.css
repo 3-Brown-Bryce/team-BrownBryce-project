@@ -1,88 +1,123 @@
 body {
   margin: 0;
-  font-family: 'Inter', Arial, sans-serif;
-  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background: #f4f6f8;
   color: #1f2937;
 }
 
+
 .container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
+  width: 92%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 28px 36px 42px;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
+
 .header {
+  width: 100%;
   background: linear-gradient(90deg, #6ea86b, #9bcf9a);
-  font-size: 36px;
-  padding: 20px;
+  font-size: 40px;
+  padding: 22px 28px;
   font-weight: 700;
   color: #142814;
-  border-radius: 14px;
-  margin-bottom: 30px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  letter-spacing: 1px;
+  border-radius: 8px;
+  margin-bottom: 36px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  box-sizing: border-box;
 }
+
 
 .main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 40px;
-  gap: 30px;
+  gap: 60px;
+  padding: 42px 48px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
 }
+
 
 .left,
 .right {
-  font-size: 28px;
+  width: 160px;
+  font-size: 32px;
+  font-weight: 600;
   color: #6b7280;
   display: flex;
   flex-direction: column;
-  
+  justify-content: center;
+  min-height: 340px;
 }
 
+
+.left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+
+.right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+
 .clock-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+
 .clock {
-  width: 220px;
-  height: 220px;
+  width: 270px;
+  height: 270px;
   border: 10px solid #6ea86b;
   border-radius: 50%;
   position: relative;
   background: #ffffff;
-  box-shadow: inset 0 4px 12px rgba(0,0,0,0.05),
-              0 10px 25px rgba(0,0,0,0.12);
+  box-shadow:
+    inset 0 4px 10px rgba(0, 0, 0, 0.03),
+    0 8px 24px rgba(0, 0, 0, 0.07);
 }
+
 
 .hand {
   position: absolute;
   bottom: 50%;
   left: 50%;
   transform-origin: bottom;
-  border-radius: 5px;
+  border-radius: 4px;
 }
+
 
 .hour {
   width: 6px;
-  height: 50px;
+  height: 58px;
   background: #111827;
 }
 
+
 .minute {
   width: 4px;
-  height: 75px;
+  height: 90px;
   background: #374151;
 }
 
+
 .second {
   width: 2px;
-  height: 95px;
+  height: 112px;
   background: #ef4444;
 }
+
 
 .clock::after {
   content: "";
@@ -96,69 +131,86 @@ body {
   transform: translate(-50%, -50%);
 }
 
+
 .days-number {
-  font-size: 36px;
-  margin-top: 18px;
+  margin-top: 26px;
+  font-size: 40px;
   font-weight: 700;
+  letter-spacing: -0.5px;
   color: #111827;
+  line-height: 1.1;
 }
+
 
 .message {
   font-size: 18px;
-  color: #4b5563;
-  margin-top: 5px;
+  color: #6b7280;
+  margin-top: 8px;
 }
 
+
 .small-btn {
-  margin-top: 12px;
-  padding: 10px 16px;
+  margin-top: 18px;
+  padding: 11px 18px;
   background: #9bcf9a;
   border: none;
-  border-radius: 12px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
-  transition: all 0.2s ease;
+  font-weight: 500;
+  transition: 0.2s ease;
 }
+
 
 .small-btn:hover {
   background: #7fbf7d;
   transform: translateY(-2px);
 }
 
+
 .bottom {
-  margin-top: 60px;
+  margin-top: 32px;
   display: flex;
-  justify-content: space-between;
-  gap: 15px;
+  gap: 14px;
+  width: 100%;
 }
 
-.big-btn {
+
+.bottom button {
   flex: 1;
-  padding: 18px;
-  font-size: 20px;
-  background: #c3d8b8;
+  padding: 16px 18px;
+  font-size: 16px;
+  font-weight: 500;
   border: none;
-  border-radius: 14px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.2s ease;
+  background: white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
 }
+
+
+.big-btn {
+  background: #c3d8b8;
+}
+
 
 .big-btn:hover {
   background: #a9caa0;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
+
+
+.bottom button:hover {
+  transform: translateY(-2px);
+}
+
 
 .logout {
   padding: 12px 20px;
   font-size: 16px;
   background: #fca5a5;
   border: none;
-  border-radius: 12px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.logout:hover {
-  background: #f87171;
-  transform: translateY(-2px);
 }
