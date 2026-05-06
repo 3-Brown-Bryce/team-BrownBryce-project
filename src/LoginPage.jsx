@@ -33,8 +33,8 @@ function LoginPage() {
         Guest Login
       </button>
     </div>
-
-  )
+    </div>
+    )
 }
 
 
