@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./log.css";
 import Journal from "./JournalEntry.jsx";
-import Upload from "./ImageUpload.jsx";
 import ClaimReward from "./Reward.jsx";
 
 function DailyLog({ setPage }) {
@@ -17,8 +16,6 @@ function DailyLog({ setPage }) {
         </div>
 
         <div className="right">
-          <Upload />
-          <Upload />
           <ClaimReward refreshKey={rewardRefresh} />
         </div>
       </div>
