@@ -36,6 +36,7 @@ function GoogleLogin({ onSignedIn }) {
       console.error('Login failed', error); 
       return
     }
+  
 
     //also part of the user collection code
     const firebaseUser = auth.currentUser;
