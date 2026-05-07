@@ -35,6 +35,10 @@ function Timer(){
             ) : (
               <span>Time's up!</span>
             )}
+
+            <button type="button" className="small-btn" onClick={() => setPage("home")}>
+              Back to Home
+            </button>
           </div>
         );
       };

@@ -113,7 +113,7 @@ function App() {
             <div className="hand second" style={{ transform: `rotate(${secondDeg}deg)` }} />
           </div>
 
-          <div className="days-number">{daysClean}</div>
+          <div className="days-number">You are {daysClean} days clean!</div>
           <div className="message">Good job {name}!</div>
         </div>
 
