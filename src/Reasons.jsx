@@ -1,3 +1,4 @@
+import "./Reason.css";
 import AddictionSelection from "./AddictionSelection";
 import ReasonSelection from "./ReasonSelection";
 import { useState, useEffect } from "react";
@@ -36,7 +37,7 @@ function Reasons({ setPage, name }) {
   }, []);
 
   return (
-    <div>
+    <div className='banana'>
       <h3>Personalize</h3>
       <p>
         {name}, answer these quick questions to personalize your experience.
