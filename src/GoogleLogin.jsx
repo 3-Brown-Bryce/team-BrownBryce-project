@@ -156,4 +156,4 @@ function GoogleLogin({ onSignedIn }) {
 }
 
 
-export default GoogleLogin;
+export default GoogleLogin
