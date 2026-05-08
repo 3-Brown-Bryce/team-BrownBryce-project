@@ -13,6 +13,7 @@ import Reasons from './Reasons.jsx';
 import Awards from './Awards.jsx';
 import LoginPage from './LoginPage.jsx';
 
+
 function App() {
   const [name, setName] = useState("Name");
   const [daysClean, setDaysClean] = useState(0);
@@ -89,6 +90,7 @@ function App() {
   if (page === "awards") {
     return <Awards setPage={setPage} name={name} />;
   }
+
 
   const seconds = time.getSeconds();
   const minutes = time.getMinutes();
