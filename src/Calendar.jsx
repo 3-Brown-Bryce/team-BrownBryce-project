@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import './Calendar.css';
+import { auth,db } from './firebase';
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
+
 
 export default function Calendar({ setPage }) {
   const [currentDate, setCurrentDate] = useState(new Date(2026, 3));
-  
-  // 1. Track two dates instead of one
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
@@ -19,19 +22,41 @@ export default function Calendar({ setPage }) {
   for (let i = 0; i < firstDay; i++) dates.push(null);
   for (let i = 1; i <= totalDays; i++) dates.push(i);
 
-  // 2. Logic to handle range selection
+  useEffect(() => {
+    const fetchSavedRange = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+  
+      try {
+        const docRef = doc(db, "dateRanges", user.uid);
+        const docSnap = await getDoc(docRef);
+  
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          const start = data.startDate.toDate();
+          const end = data.endDate.toDate();
+          setCurrentDate(new Date(start.getFullYear(), start.getMonth()));
+          setStartDate(start.getDate());
+          setEndDate(end.getDate());
+        }
+      } catch (error) {
+        console.error("Error fetching range:", error);
+      }
+    };
+  
+    fetchSavedRange();
+  }, []);
+
   const handleDateClick = (day) => {
     if (!day) return;
     
+    
     if (!startDate || (startDate && endDate)) {
-      // Start a new range
       setStartDate(day);
       setEndDate(null);
     } else if (day < startDate) {
-      // If user clicks a date before start, reset start
       setStartDate(day);
     } else if (day > startDate) {
-      // Complete the range
       setEndDate(day);
     }
   };
@@ -41,6 +66,34 @@ export default function Calendar({ setPage }) {
     setStartDate(null);
     setEndDate(null);
   };
+
+  const saveRange = async () => {
+    const user = auth.currentUser;
+  
+    if (!user) {
+      alert("Please log in first!");
+      return;
+    }
+  
+    try {
+      const start = new Date(year, month, startDate);
+      const end = new Date(year, month, endDate);
+  
+      // Use setDoc to create/overwrite a document named exactly after the UID
+      await setDoc(doc(db, "dateRanges", user.uid), {
+        uid: user.uid,
+        startDate: start,
+        endDate: end,
+        updatedAt: serverTimestamp(), // Changed to 'updatedAt' for clarity
+      });
+  
+      alert("Your date range has been updated!");
+    } catch (error) {
+      console.error("Error saving range:", error);
+      alert("Failed to update range.");
+    }
+  };
+  
 
   return (
     <div className="container">
@@ -75,18 +128,13 @@ export default function Calendar({ setPage }) {
           })}
         </div>
 
-        <button className="big-btn" onClick={() => {
-          if (startDate && endDate) {
-            alert(`Range: ${monthNames[month]} ${startDate} to ${endDate}, ${year}`);
-          } else {
-            alert("Select a start and end date!");
-          }
-        }}>
+        <button className="big-btn" onClick={saveRange}>
           Confirm Range
         </button>
         
         <button className="small-btn" onClick={() => setPage('home')}>Back</button>
       </div>
+      
     </div>
   );
 }

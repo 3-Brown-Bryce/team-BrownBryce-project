@@ -12,7 +12,7 @@ import Motivation from './Motivation.jsx';
 import Reasons from './Reasons.jsx';
 import Awards from './Awards.jsx';
 import LoginPage from './LoginPage.jsx';
-import Timer from './Timer.jsx';
+
 
 function App() {
   const [name, setName] = useState("Name");
@@ -91,9 +91,6 @@ function App() {
     return <Awards setPage={setPage} name={name} />;
   }
 
-  if (page === "timer") {
-    return <Timer setpage={setPage} name = {name} />;
-  }
 
   const seconds = time.getSeconds();
   const minutes = time.getMinutes();
@@ -158,10 +155,6 @@ function App() {
 
         <button onClick={() => setPage("reason")} className="big-btn">
           Reason
-        </button>
-
-        <button onClick={() => setPage("timer")} className = "big-btn">
-          Optional timer
         </button>
 
       </div>
