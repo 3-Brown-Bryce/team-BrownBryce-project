@@ -7,10 +7,10 @@ body {
 
 
 .container {
-  width: 92%;
-  max-width: 1380px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 28px 36px 42px;
+  padding: 30px 30px 30px;
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -20,7 +20,7 @@ body {
   width: 100%;
   background: linear-gradient(90deg, #6ea86b, #9bcf9a);
   font-size: 40px;
-  padding: 22px 28px;
+  padding: 22px 22px;
   font-weight: 700;
   color: #142814;
   border-radius: 8px;
@@ -33,10 +33,11 @@ body {
 
 .main {
   display: flex;
-  justify-content: space-between;
+  flex: 7;
+  justify-content: center;
   align-items: center;
-  gap: 60px;
-  padding: 42px 48px;
+  gap: 24px;
+  padding: 48px 48px;
   background: white;
   border-radius: 8px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
@@ -45,34 +46,41 @@ body {
 
 .left,
 .right {
-  width: 160px;
   font-size: 32px;
   font-weight: 600;
   color: #6b7280;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 340px;
+  align-items: center;
+  text-align: center;
+  flex: 7;
 }
 
 
+
 .left {
-  align-items: flex-start;
+  align-items: center;
   text-align: left;
+  flex: 7;
+  padding: 24px
 }
 
 
 .right {
-  align-items: flex-end;
+  align-items: center;
   text-align: right;
+  flex: 7;
+  padding: 27px
 }
 
 
 .clock-container {
-  flex: 1;
+  flex: 8;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 
@@ -193,6 +201,7 @@ body {
 .big-btn {
   background: #c3d8b8;
 }
+
 
 .big-btn:hover {
   background: #a9caa0;
