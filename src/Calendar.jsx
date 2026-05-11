@@ -8,7 +8,7 @@ import { getDoc } from "firebase/firestore";
 
 export default function Calendar({ setPage }) {
   const [currentDate, setCurrentDate] = useState(new Date(2026, 3));
-  const [startDate, setStartDate] = useState(null);
+  const [startDate, setStartDate] = useState(new Date(2026, 4));
   const [endDate, setEndDate] = useState(null);
 
   const year = currentDate.getFullYear();
@@ -36,8 +36,8 @@ export default function Calendar({ setPage }) {
           const start = data.startDate.toDate();
           const end = data.endDate.toDate();
           setCurrentDate(new Date(start.getFullYear(), start.getMonth()));
-          setStartDate(start.getDate());
-          setEndDate(end.getDate());
+          setStartDate(start)
+          setEndDate(end);
         }
       } catch (error) {
         console.error("Error fetching range:", error);
@@ -50,22 +50,21 @@ export default function Calendar({ setPage }) {
   const handleDateClick = (day) => {
     if (!day) return;
     
+    const clickedDate = new Date(year, month, day);
     
     if (!startDate || (startDate && endDate)) {
-      setStartDate(day);
+      setStartDate(clickedDate);
       setEndDate(null);
-    } else if (day < startDate) {
-      setStartDate(day);
-    } else if (day > startDate) {
-      setEndDate(day);
+    } else if (clickedDate < startDate) {
+      setStartDate(clickedDate);
+    } else if (clickedDate > startDate) {
+      setEndDate(clickedDate);
     }
   };
 
-  const changeMonth = (dir) => {
-    setCurrentDate(new Date(year, month + dir));
-    setStartDate(null);
-    setEndDate(null);
-  };
+const changeMonth = (dir) => {
+  setCurrentDate(new Date(year, month + dir));
+};
 
   const saveRange = async () => {
     const user = auth.currentUser;
@@ -76,8 +75,8 @@ export default function Calendar({ setPage }) {
     }
   
     try {
-      const start = new Date(year, month, startDate);
-      const end = new Date(year, month, endDate);
+      const start = startDate;
+      const end = endDate;
   
       // Use setDoc to create/overwrite a document named exactly after the UID
       await setDoc(doc(db, "dateRanges", user.uid), {
@@ -111,8 +110,9 @@ export default function Calendar({ setPage }) {
           ))}
           {dates.map((day, i) => {
             // 3. Highlight the range in the UI
-            const isSelected = day === startDate || day === endDate;
-            const isInRange = day > startDate && day < endDate;
+            const currentDayDate = day ? new Date(year, month, day) : null;
+            const isSelected = currentDayDate && (currentDayDate.toDateString() === startDate?.toDateString() || currentDayDate.toDateString() === endDate?.toDateString());
+            const isInRange = currentDayDate && startDate && endDate && currentDayDate > startDate && currentDayDate < endDate;
 
             return (
               <div
