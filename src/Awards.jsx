@@ -10,6 +10,7 @@ function Awards({ setPage, name }) {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
+    name = "_"
     const unsub = onAuthStateChanged(auth, async (user) => {
       setLoggedIn(!!user);
       if (!user) {
