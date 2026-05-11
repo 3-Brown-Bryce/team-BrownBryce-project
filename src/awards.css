@@ -36,15 +36,10 @@
 }
 
 .award-badge-img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-  display: block;
-=======
   width: 140px;
   height: 140px;
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
->>>>>>> Stashed changes
+
 }
 
 .award-badge-title {

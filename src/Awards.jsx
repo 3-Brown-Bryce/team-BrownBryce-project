@@ -62,8 +62,7 @@ function Awards({ setPage, name }) {
         <div className="awards-grid">
           {items.map((a) => (
             <div key={a.id} className="award-badge">
-              <img src={a.imageUrl} alt={a.title} className="award-badge-img" />
-              <h2 className="award-badge-title">{a.title}</h2>
+              <img src={a.imageUrl} className="award-badge-img" />
               <p className="award-badge-details">{a.details}</p>
               <p className="award-badge-meta">{formatEarned(a.earnedAt)}</p>
             </div>

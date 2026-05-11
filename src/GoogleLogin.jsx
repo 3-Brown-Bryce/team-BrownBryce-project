@@ -4,9 +4,10 @@ import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 //We have to have a firebase based user collection system in order for the award claiming firebase to work
 //this is part of that code
-import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 
-function GoogleLogin({ onSignedIn }) { 
+function GoogleLogin() { 
+  
   const [user, setUser] = useState(null);
 
   const [messages, setMessages] = useState([]);
@@ -55,7 +56,11 @@ function GoogleLogin({ onSignedIn }) {
           createdAt: previous?.createdAt ?? serverTimestamp(),
           lastLogin: serverTimestamp(),
           reason: "",
-          addiction: "",
+          dateRanges: {
+            start: new Date(year,month,startDate),
+            end: new Date(year,month,endDate)
+          },
+          
         });
         console.log("Created a new user");
       } else {
