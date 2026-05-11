@@ -1,26 +1,9 @@
 import GoogleLogin from "./GoogleLogin";
-import App from "./App.jsx";
-import { useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
-import "./LoginPage.css"
+import { useState } from "react";
 
-// Move the state inside the component function
-function LoginPage() {
-  const [page, setPage] = useState("home"); 
-
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setPage("App");
-      }
-    });
-    return () => unsub();
-  }, []);
-
-
-  if (page === "App") {
-    return <App setPage={setPage} />;
+function LoginPage({ setPage, name }) {
+    if (page === "home") {
+    return <App />;
   }
 
   return (
