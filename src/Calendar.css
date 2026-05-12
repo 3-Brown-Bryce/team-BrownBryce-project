@@ -57,3 +57,9 @@
   background: transparent;
   cursor: default;
 }
+
+.date-box.in-range{
+  background-color: #d3d0b1;
+  color: #666;
+  border-radius: 10px;
+}

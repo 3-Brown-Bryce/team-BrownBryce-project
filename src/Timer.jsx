@@ -1,43 +1,29 @@
 function Timer(){
-    const CountdownTimer = ({ targetDate }) => {
-        const calculateTimeLeft = () => {
-          const difference = +new Date(targetDate) - +new Date();
-          let timeLeft = {};
-      
-          if (difference > 0) {
-            timeLeft = {
-              days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-              hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-              minutes: Math.floor((difference / 1000 / 60) % 60),
-              seconds: Math.floor((difference / 1000) % 60),
-            };
-          }
-          return timeLeft;
-        };
-      
-        const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-      
-        useEffect(() => {
-          const timer = setInterval(() => {
-            setTimeLeft(calculateTimeLeft());
-          }, 1000);
-      
-          // CRITICAL: Cleanup interval on unmount
-          return () => clearInterval(timer);
-        }, [targetDate]);
-      
-        return (
-          <div>
-            {timeLeft.days || timeLeft.hours || timeLeft.minutes || timeLeft.seconds ? (
-              <p>
-                {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-              </p>
-            ) : (
-              <span>Time's up!</span>
-            )}
-          </div>
-        );
-      };
+  const CountdownTimer = ({ initialSeconds }) => {
+    const [seconds, setSeconds] = useState(initialSeconds);
+  
+    useEffect(() => {
+      // Exit early when timer reaches 0
+      if (seconds <= 0) return;
+  
+      // Save intervalId to clear the interval when the component unmounts
+      const intervalId = setInterval(() => {
+        setSeconds(prev => prev - 1);
+      }, 1000);
+  
+      // The cleanup function is crucial to avoid memory leaks
+      return () => clearInterval(intervalId);
+    }, [seconds]);
+  
+    return (
+      <div>
+        <h1>Time Left: {seconds}s</h1>
+        <button type="button" className="small-btn" onClick={() => setPage("home")}>
+        Back to Home
+      </button>
+      </div>
+    );
+  };
 }
 
 export default Timer
