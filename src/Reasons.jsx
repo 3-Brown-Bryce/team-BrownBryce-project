@@ -1,41 +1,17 @@
+import AddictionSelection from "./AddictionSelection"
+import ReasonSelection from "./ReasonSelection"
+import App from "./App"
 import "./Reason.css";
-import AddictionSelection from "./AddictionSelection";
-import ReasonSelection from "./ReasonSelection";
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./firebase";
 
-function Reasons({ setPage, name }) {
-  const [currentAddiction, setCurrentAddiction] = useState("");
-  const [currentQuitReason, setCurrentQuitReason] = useState("");
-
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        setCurrentAddiction("");
-        setCurrentQuitReason("");
-        return;
+function Reasons(){
+    const [page, setPage] = useState("home");
+    if (page === "App") {
+        return <App setPage={setPage} />;
       }
-      const snap = await getDoc(doc(db, "users", user.uid));
-      if (snap.exists) {
-        const data = snap.data();
-        setCurrentAddiction(typeof data.addiction === "string" ? data.addiction : "");
-        const q =
-          typeof data.quitReason === "string"
-            ? data.quitReason
-            : typeof data.reason === "string"
-              ? data.reason
-              : "";
-        setCurrentQuitReason(q);
-      } else {
-        setCurrentAddiction("");
-        setCurrentQuitReason("");
-      }
-    });
-    return () => unsub();
-  }, []);
-
   return (
     <div className='banana'>
       <h3>Personalize</h3>
@@ -54,10 +30,14 @@ function Reasons({ setPage, name }) {
         initialQuitReason={currentQuitReason}
         onQuitReasonSaved={setCurrentQuitReason}
       />
-
-      <button onClick={() => setPage("home")}>Back</button>
-    </div>
-  );
+        <div>
+            <AddictionSelection />
+            <ReasonSelection />
+        <button onClick={() => setPage("App")} className="big-btn">
+          Go back home
+        </button>
+        </div>
+    )
 }
 
 export default Reasons;
