@@ -161,4 +161,4 @@ function GoogleLogin() {
 }
 
 
-export default GoogleLogin
+export default GoogleLogin;
