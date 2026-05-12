@@ -9,8 +9,8 @@ import { auth, db } from "./firebase";
 import { streakIsActive } from "./streakUtils";
 
 function Reasons(){
-  const [currentAddiction, setCurrentAddiction] = useState("Scrolling");
-  const [currentQuitReason, setCurrentQuitReason] = useState("not set yet");
+  const [currentAddiction, setCurrentAddiction] = useState(" Enter Addiction Here");
+  const [currentQuitReason, setCurrentQuitReason] = useState(" Enter Quit Reason Here");
   const [page, setPage] = useState("home");
     if (page === "App") {
         return <App setPage={setPage} />;
