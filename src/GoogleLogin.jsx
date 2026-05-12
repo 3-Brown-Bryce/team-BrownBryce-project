@@ -56,7 +56,11 @@ function GoogleLogin() {
           createdAt: previous?.createdAt ?? serverTimestamp(),
           lastLogin: serverTimestamp(),
           reason: "",
-          addiction: "",
+          dateRanges: {
+            start: new Date(year,month,startDate),
+            end: new Date(year,month,endDate)
+          },
+          
         });
         console.log("Created a new user");
       } else {
@@ -157,4 +161,4 @@ function GoogleLogin() {
 }
 
 
-export default GoogleLogin;
+export default GoogleLogin
