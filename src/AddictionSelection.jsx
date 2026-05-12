@@ -34,6 +34,7 @@ function AddictionSelection({ initialAddiction = "", onAddictionSaved }){
                 <button onClick={() => setText("procrastination")}>procrastination</button>
                 <button onClick={() => setText("fast foods")}>fast foods</button>
                 <button onClick={() => setText("sugar")}>sugar</button>
+                {/* Sugar & Fast Food both seem the same */}
                 <button onClick={() => setText("caffeine")}>caffeine</button>
                 <button onClick={() => setText("skin picking")}>skin picking</button>
             </section>
