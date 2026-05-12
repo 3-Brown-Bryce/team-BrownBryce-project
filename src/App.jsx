@@ -104,7 +104,7 @@ function App() {
       <div className="header">Addiction Management</div>
 
       <div className="main">
-        <div className="left">Days</div>
+        <div className="left">{daysClean} Days</div>
 
         <div className="clock-container">
           <div className="clock">
