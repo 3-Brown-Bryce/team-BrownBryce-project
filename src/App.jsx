@@ -13,6 +13,7 @@ import Reasons from './Reasons.jsx';
 import Awards from './Awards.jsx';
 import LoginPage from './LoginPage.jsx';
 
+
 function App() {
   const [name, setName] = useState("Name");
   const [daysClean, setDaysClean] = useState(0);
@@ -90,6 +91,7 @@ function App() {
     return <Awards setPage={setPage} name={name} />;
   }
 
+
   const seconds = time.getSeconds();
   const minutes = time.getMinutes();
   const hours = time.getHours();
@@ -104,7 +106,7 @@ function App() {
       <div className="header">Addiction Management</div>
 
       <div className="main">
-        <div className="left">Days</div>
+        <div className="left">{daysClean} Days</div>
 
         <div className="clock-container">
           <div className="clock">
