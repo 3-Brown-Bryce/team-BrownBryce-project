@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react"
-
-
+import { useState } from "react"
+// Never used???
 function Upload(){
  const [apiData, setApiData] = useState ("");
 

@@ -1,62 +1,45 @@
-import AddictionSelection from "./AddictionSelection";
-import ReasonSelection from "./ReasonSelection";
-import { useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import AddictionSelection from "./AddictionSelection"
+import ReasonSelection from "./ReasonSelection"
+import App from "./App"
+import "./Reason.css";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./firebase";
+import { streakIsActive } from "./streakUtils";
 
-function Reasons({ setPage, name }) {
-  const [currentAddiction, setCurrentAddiction] = useState("");
-  const [currentQuitReason, setCurrentQuitReason] = useState("");
-
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        setCurrentAddiction("");
-        setCurrentQuitReason("");
-        return;
+function Reasons(){
+  const [currentAddiction, setCurrentAddiction] = useState("Scrolling");
+  const [currentQuitReason, setCurrentQuitReason] = useState("not set yet");
+  const [page, setPage] = useState("home");
+    if (page === "App") {
+        return <App setPage={setPage} />;
       }
-      const snap = await getDoc(doc(db, "users", user.uid));
-      if (snap.exists) {
-        const data = snap.data();
-        setCurrentAddiction(typeof data.addiction === "string" ? data.addiction : "");
-        const q =
-          typeof data.quitReason === "string"
-            ? data.quitReason
-            : typeof data.reason === "string"
-              ? data.reason
-              : "";
-        setCurrentQuitReason(q);
-      } else {
-        setCurrentAddiction("");
-        setCurrentQuitReason("");
-      }
-    });
-    return () => unsub();
-  }, []);
-
   return (
-    <div>
+    <div className='banana'>
       <h3>Personalize</h3>
       <p>
-        {name}, answer these quick questions to personalize your experience.
+        Answer these quick questions to personalize your experience.
       </p>
       <AddictionSelection
         initialAddiction={currentAddiction}
         onAddictionSaved={setCurrentAddiction}
       />
+      <strong>Your addiction:</strong>{currentAddiction}
       <p>
-        <strong>Your reason to quit:</strong>{" "}
         {currentQuitReason ? currentQuitReason : "(not set yet)"}
       </p>
       <ReasonSelection
         initialQuitReason={currentQuitReason}
         onQuitReasonSaved={setCurrentQuitReason}
       />
+        <strong>Your reason to quit:</strong>{currentQuitReason}
 
-      <button onClick={() => setPage("home")}>Back</button>
-    </div>
-  );
+        <button onClick={() => setPage("App")} className="big-btn">
+          Go back home
+        </button>
+        </div>
+    )
 }
 
 export default Reasons;

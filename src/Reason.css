@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1f2937;
+}
+
+
+.banana {
+  width: 92%;
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 34px 42px 40px;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+
+.banana h3 {
+  margin: 0 0 20px 0;
+  font-size: 36px;
+  font-weight: 700;
+  color: #142814;
+  padding: 16px 20px;
+  background: linear-gradient(90deg, #6ea86b, #9bcf9a);
+  border-radius: 6px;
+  letter-spacing: -0.4px;
+}
+
+
+.banana p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 18px 0;
+}
+
+
+.banana strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+
+.banana select,
+.banana input,
+.banana textarea {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 22px;
+  padding: 13px 14px;
+  font-size: 15px;
+  font-family: inherit;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: white;
+  box-sizing: border-box;
+}
+
+
+.banana select:focus,
+.banana input:focus,
+.banana textarea:focus {
+  outline: none;
+  border-color: #6ea86b;
+}
+
+
+.banana button {
+  margin-top: 16px;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  background: #c3d8b8;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+
+.banana button:hover {
+  background: #a9caa0;
+  transform: translateY(-2px);
+}

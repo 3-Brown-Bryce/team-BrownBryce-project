@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Motivation.css";
 
+// Would like feature: Make a JSON or CSV file for these that is called, keep it seperate from the code itself
 const quotes = [
   "You're doing great [name]!",
   "Keep reaching for the stars [name]!",
