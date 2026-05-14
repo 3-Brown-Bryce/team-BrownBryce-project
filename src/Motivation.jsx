@@ -6,7 +6,8 @@ const quotes = [
   "You're doing great [name]!",
   "Keep reaching for the stars [name]!",
   "Your addiction does not define you [name]!",
-  "Recovery takes time [name]!"
+  "Recovery takes time [name]!",
+  "Your future depends on what you do today [name]!"
 ];
 
 function Motivation({ setPage, name = "friend" }) {
