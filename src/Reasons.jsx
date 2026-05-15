@@ -9,12 +9,40 @@ import { auth, db } from "./firebase";
 import { streakIsActive } from "./streakUtils";
 
 function Reasons(){
-  const [currentAddiction, setCurrentAddiction] = useState("Scrolling");
-  const [currentQuitReason, setCurrentQuitReason] = useState("not set yet");
+  const [currentAddiction, setCurrentAddiction] = useState("");
+  const [currentQuitReason, setCurrentQuitReason] = useState("");
   const [page, setPage] = useState("home");
     if (page === "App") {
         return <App setPage={setPage} />;
       }
+
+      useEffect(() => {
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        setCurrentAddiction("");
+        setCurrentQuitReason("");
+        return;
+      }
+      const snap = await getDoc(doc(db, "users", user.uid));
+      if (snap.exists) {
+        const data = snap.data();
+        setCurrentAddiction(typeof data.addiction === "string" ? data.addiction : "");
+        const q =
+          typeof data.quitReason === "string"
+            ? data.quitReason
+            : typeof data.reason === "string"
+              ? data.reason
+              : "";
+        setCurrentQuitReason(q);
+      } else {
+        setCurrentAddiction("");
+        setCurrentQuitReason("");
+      }
+    });
+    return () => unsub();
+  }, []);
+
+    
   return (
     <div className='banana'>
       <h3>Personalize</h3>
